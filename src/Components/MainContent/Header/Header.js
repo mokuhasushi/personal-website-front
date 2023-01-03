@@ -1,7 +1,7 @@
 const Header = () => {
   return (
-    <div class="row h-auto header">
-      <div class="col-12 bg-body-primary h2">CURRENT API</div>
+    <div className="row h-auto header align-items-stretch">
+      <div className="col-12 bg-body-primary text-center my-2"><h2>Random greeting</h2></div>
     </div>
   );
 };

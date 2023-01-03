@@ -1,13 +1,13 @@
 const Navbar = () => {
   return (
-    <nav class="navbar bg-body-secondary">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/">
+    <nav className="navbar bg-body-secondary">
+      <div className="container-fluid">
+        <a className="navbar-brand" href="/">
           Antonio Tirone
         </a>
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link" href="/contacts">
+        <ul className="navbar-nav me-auto">
+          <li className="nav-item">
+            <a className="nav-link" href="/contacts">
               Contacts
             </a>
           </li>
