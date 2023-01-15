@@ -1,7 +1,7 @@
 import Endpoints from "../Endpoints/Endpoints";
 import RequestParameters from "../RequestParameters/RequestParameters";
 
-const APISelector = () => {
+const APISelector = ({ endpoints }) => {
   return (
     <div className="col-4 bg-body-secondary border">
       <div
@@ -44,16 +44,16 @@ const APISelector = () => {
             id="endpoints-tab-pane"
             role="tabpanel"
             aria-labelledby="home-tab"
-            tabindex="0"
+            tabIndex="0"
           >
-            <Endpoints />
+            <Endpoints endpoints={endpoints} />
           </div>
           <div
             className="tab-pane fade"
             id="parameters-tab-pane"
             role="tabpanel"
             aria-labelledby="parameters-tab"
-            tabindex="0"
+            tabIndex="0"
           >
             <RequestParameters />
           </div>
