@@ -7,6 +7,7 @@ import FetchLogger from "./FetchLogger/FetchLogger";
 const MainContent = () => {
   return (
     <div className="container-fluid">
+      USE FETCH OR USE QUERY 
       <Header />
       <div className="row mx-1">
         <APISelector />
