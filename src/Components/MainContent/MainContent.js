@@ -1,5 +1,4 @@
-import axios from "axios";
-import { useQuery } from "react-query";
+import { useState } from "react";
 
 //Components
 import APISelector from "./APISelector/APISelector";
@@ -9,27 +8,7 @@ import History from "./History/History";
 import FetchLogger from "./FetchLogger/FetchLogger";
 
 const MainContent = () => {
-  let content = "";
-  // const { isLoading, isError, data } = useQuery("joke", async () => {
-  //   const { data } = await axios();
-  //   return data;
-  // });
-  // if (isLoading) {
-  //   content = <h1>Loading...</h1>;
-  // } else if (isError) {
-  //   content = <h1>Error!</h1>;
-  // } else {
-  //   content = data.value;
-  // }
-  let endpoints = [
-    {
-      name: "Chuck Norris",
-      url: "https://api.chucknorris.io/jokes/random",
-      active: true,
-      methods: ["GET"],
-      description: "An external endpoint proposing Chuck Norris jokes",
-      paramsList: [],
-    },
+  const [endpoints, setEndpoints] = useState([
     {
       name: "Chuck Norris 2",
       url: "https://api.chucknorris.io/jokes/random",
@@ -38,12 +17,26 @@ const MainContent = () => {
       description: "Test for active endpoints",
       paramsList: [],
     },
-  ];
+  ]);
+  const [content, setContent] = useState("");
+  const [currentEndpoint, setCurrentEndpoint] = useState({
+    name: "Chuck Norris",
+    url: "https://api.chucknorris.io/jokes/random",
+    active: true,
+    methods: ["GET"],
+    description: "An external endpoint proposing Chuck Norris jokes",
+    paramsList: [],
+  });
   return (
     <div className="container-fluid">
       <Header />
       <div className="row mx-1">
-        <APISelector endpoints={endpoints} />
+        <APISelector
+          endpoints={endpoints}
+          setContent={setContent}
+          currentEndpoint={currentEndpoint}
+          setCurrentEndpoint={setCurrentEndpoint}
+        />
         <Renderer content={content} />
       </div>
       {/* <div className="row mx-1">

@@ -2,10 +2,14 @@ import { useQuery } from "react-query";
 import axios from "axios";
 
 const Header = () => {
-  const { isLoading, isError, data } = useQuery("greeting", async () => {
-    const { data } = await axios("https://www.greetingsapi.com/random");
-    return data;
-  });
+  const { isLoading, isError, data } = useQuery(
+    "greeting",
+    async () => {
+      const { data } = await axios("https://www.greetingsapi.com/random");
+      return data;
+    },
+    { refetchOnWindowFocus: false }
+  );
   let greetingText;
   let greetingLanguage = "English";
   if (isLoading) {

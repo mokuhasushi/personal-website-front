@@ -1,7 +1,31 @@
+import axios from "axios";
+import { useQuery } from "react-query";
+
 import Endpoints from "../Endpoints/Endpoints";
 import RequestParameters from "../RequestParameters/RequestParameters";
+
 import { ReactComponent as Play } from "../../../play.svg";
-const APISelector = ({ endpoints }) => {
+const APISelector = ({
+  endpoints,
+  setContent,
+  currentEndpoint,
+  setCurrentEndpoint,
+}) => {
+  const { data, refetch } = useQuery(currentEndpoint.name, {
+    queryFn: async () => {
+      const { data } = await axios(currentEndpoint.url);
+      return data;
+    },
+    refetchOnWindowFocus: false,
+    enabled: false, // disable this query from automatically running
+    onSuccess: (data) => setContent(data.value),
+    onError: (error) => setContent(`Error! ${error}`),
+  });
+  const handleClick = () => {
+    // manually refetch
+    setContent("Loading...");
+    refetch();
+  };
   return (
     <div className="col-4 bg-body-secondary border">
       <div
@@ -38,7 +62,7 @@ const APISelector = ({ endpoints }) => {
             </button>
           </li>
           <li>
-            <button type="button" class="btn btn-primary">
+            <button type="button" class="btn btn-primary" onClick={handleClick}>
               <Play />
             </button>
           </li>
@@ -52,7 +76,11 @@ const APISelector = ({ endpoints }) => {
             aria-labelledby="home-tab"
             tabIndex="0"
           >
-            <Endpoints endpoints={endpoints} />
+            <Endpoints
+              endpoints={endpoints}
+              currentEndpoint={currentEndpoint}
+              setCurrentEndpoint={setCurrentEndpoint}
+            />
           </div>
           <div
             className="tab-pane fade"
