@@ -57,6 +57,7 @@ const APISelector = ({
               role="tab"
               aria-controls="parameters-tab-pane"
               aria-selected="false"
+              disabled={true}
             >
               Parameters
             </button>
