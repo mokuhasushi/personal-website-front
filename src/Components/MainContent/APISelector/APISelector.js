@@ -1,6 +1,6 @@
 import Endpoints from "../Endpoints/Endpoints";
 import RequestParameters from "../RequestParameters/RequestParameters";
-
+import { ReactComponent as Play } from "../../../play.svg";
 const APISelector = ({ endpoints }) => {
   return (
     <div className="col-4 bg-body-secondary border">
@@ -8,7 +8,7 @@ const APISelector = ({ endpoints }) => {
         className="d-flex flex-column align-items-stretch flex-shrink-0"
         style={{ height: "65vh" }}
       >
-        <ul className="nav nav-tabs" id="myTab" role="tablist">
+        <ul className="nav nav-tabs nav-fill" id="myTab" role="tablist">
           <li className="nav-item" role="presentation">
             <button
               className="nav-link active"
@@ -37,7 +37,13 @@ const APISelector = ({ endpoints }) => {
               Parameters
             </button>
           </li>
+          <li>
+            <button type="button" class="btn btn-primary">
+              <Play />
+            </button>
+          </li>
         </ul>
+
         <div className="tab-content h-100 overflow-auto" id="myTabContent">
           <div
             className="tab-pane fade show active"

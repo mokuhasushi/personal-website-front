@@ -46,10 +46,10 @@ const MainContent = () => {
         <APISelector endpoints={endpoints} />
         <Renderer content={content} />
       </div>
-      <div className="row mx-1">
+      {/* <div className="row mx-1">
         <History />
         <FetchLogger />
-      </div>
+      </div> */}
     </div>
   );
 };
