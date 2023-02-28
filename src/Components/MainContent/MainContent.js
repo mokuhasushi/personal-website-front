@@ -4,8 +4,8 @@ import { useState } from "react";
 import APISelector from "./APISelector/APISelector";
 import Renderer from "./Renderer/Renderer";
 import Header from "./Header/Header";
-import History from "./History/History";
-import FetchLogger from "./FetchLogger/FetchLogger";
+// import History from "./History/History";
+// import FetchLogger from "./FetchLogger/FetchLogger";
 
 const MainContent = () => {
   const [endpoints, setEndpoints] = useState([
@@ -18,6 +18,7 @@ const MainContent = () => {
       paramsList: [],
     },
   ]);
+  console.log(setEndpoints);
   const [content, setContent] = useState(
     "API content will be displayed here, once the backend will be ready"
   );

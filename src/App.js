@@ -3,7 +3,7 @@ import "./App.css";
 
 // Queries
 import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+// import { ReactQueryDevtools } from "react-query/devtools";
 
 // Components
 import Navbar from "./Components/Navbar/Navbar";

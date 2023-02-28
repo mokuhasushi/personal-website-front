@@ -26,6 +26,7 @@ const APISelector = ({
     setContent("Loading...");
     refetch();
   };
+  console.log(data);
   return (
     <div className="col-4 bg-body-secondary border">
       <div
