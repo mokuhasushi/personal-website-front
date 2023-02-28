@@ -18,7 +18,9 @@ const MainContent = () => {
       paramsList: [],
     },
   ]);
-  const [content, setContent] = useState("");
+  const [content, setContent] = useState(
+    "API content will be displayed here, once the backend will be ready"
+  );
   const [currentEndpoint, setCurrentEndpoint] = useState({
     name: "Chuck Norris",
     url: "https://api.chucknorris.io/jokes/random",
