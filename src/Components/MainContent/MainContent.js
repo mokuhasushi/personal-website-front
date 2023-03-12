@@ -6,7 +6,7 @@ import Renderer from "./Renderer/Renderer";
 import Header from "./Header/Header";
 import axios from "axios";
 import { useQuery } from "react-query";
-import { xml2json } from "xml-js";
+import { convertXML } from "simple-xml-to-json";
 // import History from "./History/History";
 // import FetchLogger from "./FetchLogger/FetchLogger";
 
@@ -19,19 +19,26 @@ const MainContent = () => {
     queryFn: async () => {
       const { data: xmlData } = await axios(S3URL + "?list-type=2");
 
-      const rawObjectResponse = JSON.parse(
-        xml2json(xmlData, {
-          compact: true,
-        })
-      );
+      var rawObjectResponse = convertXML(xmlData);
 
       var data = {};
-      rawObjectResponse.ListBucketResult.Contents.forEach((element) => {
-        if (element.Size._text > 0) {
-          var path = element.Key._text;
-          var [name, extension] = path.split("/").at(-1).split(".");
-          if (extension === "md") {
-            data[path] = { url: S3URL + path, name: name, description: "" };
+      rawObjectResponse.ListBucketResult.children.forEach((element) => {
+        if (!!element.Contents) {
+          var key;
+          var size;
+          element.Contents.children.forEach((innerElement) => {
+            if (!!innerElement.Key) {
+              key = innerElement.Key.content;
+            }
+            if (!!innerElement.Size) {
+              size = innerElement.Size.content;
+            }
+          });
+          if (size > 0) {
+            var [name, extension] = key.split("/").at(-1).split(".");
+            if (extension === "md") {
+              data[key] = { url: S3URL + key, name: name, description: "" };
+            }
           }
         }
       });
