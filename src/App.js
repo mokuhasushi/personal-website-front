@@ -9,16 +9,25 @@ import { QueryClient, QueryClientProvider } from "react-query";
 import Navbar from "./Components/Navbar/Navbar";
 import Footer from "./Components/Footer/Footer";
 import MainContent from "./Components/MainContent/MainContent";
+import Contacts from "./Components/Contacts/Contacts";
 
 const queryClient = new QueryClient();
+
+const Route = ({ path, children }) => {
+  return window.location.pathname === path ? children : null;
+};
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Navbar />
-      <MainContent />
+      <Route path="/">
+        <MainContent />
+      </Route>
+      <Route path="/contacts">
+        <Contacts />
+      </Route>
       <Footer />
-      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
     </QueryClientProvider>
   );
 }
