@@ -25,12 +25,7 @@ const Header = () => {
       <div className="col-12 bg-body-primary text-center my-2">
         <h2 title={`Greetings in ${greetingLanguage}`}>{greetingText}!</h2>
       </div>
-      <div className="col-12 bg-body-primary text-center my-2">
-        <h3>
-          Hello! Sorry, the site is being actively developed, but there is not
-          much to see yet. Feel free to come back regularly for updates!
-        </h3>
-      </div>
+      <div className="col-12 bg-body-primary text-center my-2"></div>
     </div>
   );
 };

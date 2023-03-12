@@ -11,24 +11,23 @@ import Footer from "./Components/Footer/Footer";
 import MainContent from "./Components/MainContent/MainContent";
 import Contacts from "./Components/Contacts/Contacts";
 
-const queryClient = new QueryClient();
+// Router
+import { Routes, Route, BrowserRouter } from "react-router-dom";
 
-const Route = ({ path, children }) => {
-  return window.location.pathname === path ? children : null;
-};
+const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Navbar />
-      <Route path="/">
-        <MainContent />
-      </Route>
-      <Route path="/contacts">
-        <Contacts />
-      </Route>
-      <Footer />
-    </QueryClientProvider>
+    <BrowserRouter>
+      <QueryClientProvider client={queryClient}>
+        <Navbar />
+        <Routes>
+          <Route path="/" element={<MainContent />} />
+          <Route path="/contacts" element={<Contacts />} />
+        </Routes>
+        <Footer />
+      </QueryClientProvider>
+    </BrowserRouter>
   );
 }
 
