@@ -5,6 +5,7 @@ const Contacts = () => {
       <ul>
         <li>tironeantonio@gmail.com</li>
         <li>+33 0666718495</li>
+        <li>Instagram: @tonyy31415</li>
         <li>
           <a href="https://www.linkedin.com/in/tironeantonio/">
             Linkedin Account
@@ -12,6 +13,16 @@ const Contacts = () => {
         </li>
         <li>
           <a href="https://github.com/mokuhasushi">Github Account</a>
+        </li>
+        <li>
+          <a href="https://vimeo.com/niotir">
+            Vimeo Account
+          </a>
+        </li>
+        <li>
+          <a href="https://www.youtube.com/@donspazioanto">
+            YouTube Account
+          </a>
         </li>
       </ul>
       And{" "}
